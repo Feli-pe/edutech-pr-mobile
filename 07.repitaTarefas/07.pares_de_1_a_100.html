@@ -1,0 +1,21 @@
+<meta charset="UTF-8">
+
+<script>
+	function pulaLinha() {
+		document.write("<br><hr><br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+
+	var contador = 2;
+
+	mostra("IMPRIMNDO TODOS OS NÚMEROS PARES DE 1 A 100");
+
+	while (contador <= 100) {
+		mostra(contador);
+		contador = contador +2;
+	}
+</script>
