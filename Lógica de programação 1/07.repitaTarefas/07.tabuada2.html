@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<script>
+	function pulaLinha() {
+		document.write("<br><hr><br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+
+	function perguntar(pergunta) {
+		return prompt(pergunta);
+	}
+
+	function geraTabuada(numero)  {
+		var contador = 1;
+		while(contador <= 10){
+			mostra(numero + "X" + contador "=" + numero*contador);
+			contador = contador + 1;
+		}
+	}
+
+	var numeroTabuada = perguntar("Deseja visualizar a tabuada de qual número?");
+
+</script>
