@@ -1,2 +1,2 @@
-# LP-1_edutech-pr
-Repositório destinado aos arquivos criados durante o curso de lógica 1.
+# edutech-pr-mobile
+Repositório destinado aos arquivos criados durante todos os cursos do programa edutech, da trilha mobile.
