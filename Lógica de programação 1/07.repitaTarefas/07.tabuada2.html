@@ -2,26 +2,34 @@
 
 <script>
 	function pulaLinha() {
+
 		document.write("<br><hr><br>");
 	}
 
 	function mostra(frase) {
+
 		document.write(frase);
 		pulaLinha();
 	}
 
 	function perguntar(pergunta) {
+
 		return prompt(pergunta);
 	}
 
 	function geraTabuada(numero)  {
-		var contador = 1;
-		while(contador <= 10) {
-			mostra(numero + "X" + contador "=" + numero*contador);
-			contador = contador + 1;
+
+		for(var contador = 1; contador <= 10; contador++) {
+			mostra(numero + " X " + contador + " = " + (numero*contador));
 		}
 	}
 
-	var numeroTabuada = perguntar("Deseja visualizar a tabuada de qual número?");
+	var numeroTabuada = parseInt(perguntar("Deseja visualizar a tabuada de qual número?"));
+
 	geraTabuada(numeroTabuada);
+
+	if (isNaN(numeroTabuada)) {
+		mostra("Por favor recarregue a página e digite um número!");
+	}
+	mostra("FIM");
 </script>

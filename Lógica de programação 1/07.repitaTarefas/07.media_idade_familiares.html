@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<script>
+	function pulaLinha() {
+
+		document.write("<br><hr><br>");
+	}
+
+	function mostra(frase) {
+
+		document.write(frase);
+		pulaLinha();
+	}
+
+	function perguntar(pergunta) {
+
+		return prompt(pergunta);
+	}
+
+	var contador = 1;
+	var numeroFamiliares = parseInt(perguntar("Quantos familiares você tem?"));
+	var media = 0;
+
+	while (contador <= numeroFamiliares) {
+
+		var idade = parseInt(perguntar("Qual a idade do " + contador + " familiar?"));
+
+		if (isNaN(idade)) {
+
+	 		alert("favor digitar um numero!");
+
+		} else {
+
+			media = media + idade;
+			contador++;
+		}
+	}
+
+	mostra("A media das idades é " + media/numeroFamiliares + ".");
+
+</script>
