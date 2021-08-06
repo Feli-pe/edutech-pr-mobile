@@ -2,11 +2,48 @@
 
 <script>
 	function pulaLinha() {
+
 		document.write("<br><hr><br>");
 	}
 	function mostra(frase) {
+
 		document.write(frase);
 		pulaLinha();
 	}
+	function perguntar(pergunta) {
+
+		return prompt(pergunta);
+	}
+
+	function escolhe(numero) {
+
+		return Math.round(Math.random() * numero);
+	}
+
+	var multiplicador = 10;
+	var numeroEscolhido = escolhe(multiplicador);
+	var tentativas = 3;
+	var acertou = 3;
+	var errou = 3;
+
+
+	while (tentativas >= 0 && acertou != 1 && errou != 1) {
+
+		var chute = perguntar("Escolhi um número de 0 a " + multiplicador + " tente adivinhar qual é:");
+
+		if (chute == numeroEscolhido) {
+
+			alert("Parabéns você acertou!");
+			acertou = 1;
+		} else if (tentativas == 0) {
+			alert("Suas tentaivas esgotaram!, o número era: " + numeroEscolhido);
+			errou = 1;
+		} else {
+			alert("Você errou tente de novo " + tentativas + " Tentativas restantes");
+			tentativas = tentativas - 1;
+		}
+	}
+
+	mostra("FIM");
 
 </script>
