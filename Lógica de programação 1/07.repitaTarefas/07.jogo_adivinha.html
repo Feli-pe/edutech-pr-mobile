@@ -23,26 +23,21 @@
 	var multiplicador = 10;
 	var numeroEscolhido = escolhe(multiplicador);
 	var tentativas = 3;
-	var acertou = 3;
-	var errou = 3;
 
+ 	while(tentativas != 0) {
 
-	while (tentativas >= 0 && acertou != 1 && errou != 1) {
+ 		var chute = parseInt(perguntar("Pensei em um número entre 0 e " + multiplicador + " tente adivinhar qual é!"));
 
-		var chute = perguntar("Escolhi um número de 0 a " + multiplicador + " tente adivinhar qual é:");
+ 		if (chute == numeroEscolhido) {
 
-		if (chute == numeroEscolhido) {
+ 			alert("você acertou!");
+ 			break;
+ 		} else {
+ 			tentativas--;
+ 			alert("você errou! " + tentativas + " tentativas restantes");
+ 		}
 
-			alert("Parabéns você acertou!");
-			acertou = 1;
-		} else if (tentativas == 0) {
-			alert("Suas tentaivas esgotaram!, o número era: " + numeroEscolhido);
-			errou = 1;
-		} else {
-			alert("Você errou tente de novo " + tentativas + " Tentativas restantes");
-			tentativas = tentativas - 1;
-		}
-	}
+ 	}
 
 	mostra("FIM");
 
