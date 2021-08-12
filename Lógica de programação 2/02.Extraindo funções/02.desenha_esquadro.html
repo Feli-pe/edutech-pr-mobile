@@ -1,0 +1,34 @@
+
+<canvas width="600" height="600"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'black';
+    pincel.fillRect(0, 0, 600, 600);
+
+    function desenhaTriangulo (xa, ya, xc, yc, cor) {
+        var xb = xa
+        var yb = yc
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xb, yb);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+
+    }
+
+    function desenhaEsquadro (xa, ya, xc, yc, cor, borda) {
+        var valor1 = borda + 25
+        var valor2 = borda + valor1;
+        desenhaTriangulo(xa, ya, xc, yc, cor);
+        desenhaTriangulo(xa+borda, ya+valor2, xc-valor2, yc-borda, 'white');
+    }
+
+    desenhaEsquadro(50, 50, 600, 400, 'red', 40);
+    //não finalizado
+</script>
