@@ -1,1 +1,1 @@
-Nesta pasta estão todos os códigos que eu tive vontade de criar durante o curso.
+Nesta pasta estão todos os códigos que eu tive vontade de criar durante os cursos.
