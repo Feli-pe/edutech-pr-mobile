@@ -54,5 +54,14 @@
 
 	pincel.fillStyle = 'lightgray';
 	pincel.fillRect(0, 0, 600, 400);
-	desenhaQuadrado(0, 0, quantosQuad, 50, 50, 'darkblue');
+
+	if(quantosQuad <= 96) {
+
+		desenhaQuadrado(0, 0, quantosQuad, 50, 50, 'darkblue');
+	} else {
+		alert("Só consigo desenhar 96, olhe!");
+		desenhaQuadrado(0, 0, 96, 50, 50, 'darkblue');
+
+	}
+
 </script>
