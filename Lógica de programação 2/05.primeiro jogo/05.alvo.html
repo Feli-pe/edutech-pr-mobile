@@ -1,0 +1,70 @@
+<canvas width="600" height="400"></canvas>
+<input type="button"></input>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    var mostraPontos = document.querySelector('input');
+    var raio = 10;
+    var x = 0;
+    var y = 0;
+    var intervalo = 1000;
+    var pontos = 0;
+
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+    function desenhaAlvo(x, y) {
+
+    	desenhaCirculo(x, y, raio+20, 'red');
+    	desenhaCirculo(x, y, raio+10, 'white');
+    	desenhaCirculo(x, y, 10, 'red');
+    }
+
+    function escolheNumero(limite){
+
+    	return Math.floor(Math.random()*limite);
+    }
+
+    function moveAlvo(){
+
+    	limpaTela();
+    	x = escolheNumero(300);
+    	y =	escolheNumero(500);
+    	desenhaAlvo(x, y);
+    }
+
+    function pegaClick(evento){
+
+    	var mousey = evento.pageY - tela.offsetTop;
+    	var mousex = evento.pageX - tela.offsetLeft;
+    	if(mousex > x - raio && mousex < x + raio) {
+    		if(mousey > y - raio && mousey < y + raio) {
+    			mostraPontos.value++;
+    			limpaTela();
+    			y = 500;
+    			x = 700;
+    		}
+    	}
+
+   	}
+
+   	mostraPontos.value = pontos;
+    setInterval(moveAlvo, intervalo);
+    tela.onclick = pegaClick;
+</script>

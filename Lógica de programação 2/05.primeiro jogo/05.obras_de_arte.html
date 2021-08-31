@@ -1,0 +1,94 @@
+<meta charset="UTF-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function desenhaQuadrado(x, y, tamanho, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.fillRect(x, y, tamanho, tamanho)
+        pincel.fill();
+    }
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.fill();
+
+    }
+
+    function desenhaPaletaDeCores() {
+
+        desenhaQuadrado(xVermelho, yQuadrados, tamanhoQuadrados, 'red');
+        desenhaQuadrado(xVerde, yQuadrados, tamanhoQuadrados, 'green');
+        desenhaQuadrado(xAzul, yQuadrados, tamanhoQuadrados, 'blue');
+
+    }
+
+    function detectaMouse(evento) {
+
+        x = evento.pageX - tela.offsetLeft;
+        y = evento.pageY - tela.offsetTop;
+
+        if(x > 0 && x < 150 && y > 0 && y < 50) {
+
+            contato = true;
+        } else {
+            
+            contato = false;
+        }
+    }
+
+    function click(evento){
+
+        x = evento.pageX - tela.offsetLeft;
+        y = evento.pageY - tela.offsetTop;
+
+        desenha = true;
+    }
+
+    function deixaClick(evento){
+
+        x = evento.pageX - tela.offsetLeft;
+        y = evento.pageY - tela.offsetTop;  
+
+        desenha = false;
+    }
+
+    function atualizaTela() {
+
+        if(desenha == true && contato == false) {
+
+            desenhaCirculo(x, y, 3, corAtual);
+        }
+    }
+
+    var contato = false;
+    var x;
+    var y;
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var desenha = false;
+    var corAtual = 'blue';
+    var xVermelho = 0;
+    var xVerde  = 50;
+    var xAzul = 100;
+    var yQuadrados = 0;
+    var tamanhoQuadrados = 50;
+
+    desenhaPaletaDeCores();
+
+    tela.onmousemove = detectaMouse;
+    tela.onmousedown = click;
+    tela.onmouseup = deixaClick;
+
+    setInterval(atualizaTela, 0.1);
+
+
+</script>
