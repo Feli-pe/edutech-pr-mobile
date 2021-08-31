@@ -7,8 +7,10 @@
     function desenhaQuadrado(x, y, tamanho, cor) {
 
         pincel.fillStyle = cor;
+        pincel.beginPath();
         pincel.fillRect(x, y, tamanho, tamanho)
         pincel.fill();
+        pincel.closePath();
     }
 
     function desenhaCirculo(x, y, raio, cor) {
@@ -17,6 +19,8 @@
         pincel.beginPath();
         pincel.arc(x, y, raio, 0, 2 * 3.14);
         pincel.fill();
+        pincel.closePath();
+        console.log('a');
 
     }
 
@@ -28,54 +32,68 @@
 
     }
 
-    function detectaMouse(evento) {
+    function lidaComMovimentoDoMouse(evento) {
 
-        x = evento.pageX - tela.offsetLeft;
-        y = evento.pageY - tela.offsetTop;
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
 
-        if(x > 0 && x < 150 && y > 0 && y < 50) {
+        if(x >= 0 && x <= 150 && y >= 0 && y <= 50) {
 
             contato = true;
+            limpar();
         } else {
-            
+
             contato = false;
+        }
+
+        if(desenha == true && contato == false) {
+
+            desenhaCirculo(x, y, 5, corAtual);
         }
     }
 
-    function click(evento){
-
-        x = evento.pageX - tela.offsetLeft;
-        y = evento.pageY - tela.offsetTop;
+    function habilitaDesenhar() {
 
         desenha = true;
     }
 
-    function deixaClick(evento){
-
-        x = evento.pageX - tela.offsetLeft;
-        y = evento.pageY - tela.offsetTop;  
+    function desabilitaDesenhar() {
 
         desenha = false;
     }
 
-    function atualizaTela() {
+    function limpar(){
 
-        if(desenha == true && contato == false) {
+        pincel.clearRect(0, 0, 150, 50);
+        desenhaPaletaDeCores();
+    }
 
-            desenhaCirculo(x, y, 3, corAtual);
+    function escolheCor(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        if(contato) {
+            if(x >= 0 && x <= 50) {
+                corAtual = 'red';
+            }
+            if(x >= 50 && x <= 100) {
+                corAtual = 'green';
+            }
+            if(x >= 100 && x <= 150) {
+                corAtual = 'blue';
+            }
         }
     }
 
-    var contato = false;
-    var x;
-    var y;
     var tela = document.querySelector('canvas');
     var pincel = tela.getContext('2d');
     pincel.fillStyle = 'lightgray';
     pincel.fillRect(0, 0, 600, 400);
 
+    var contato = false;
     var desenha = false;
-    var corAtual = 'blue';
+    var corAtual;
     var xVermelho = 0;
     var xVerde  = 50;
     var xAzul = 100;
@@ -84,11 +102,12 @@
 
     desenhaPaletaDeCores();
 
-    tela.onmousemove = detectaMouse;
-    tela.onmousedown = click;
-    tela.onmouseup = deixaClick;
+    tela.onmousemove = lidaComMovimentoDoMouse;
 
-    setInterval(atualizaTela, 0.1);
+    tela.onmousedown = habilitaDesenhar;
 
+    tela.onmouseup = desabilitaDesenhar;
+
+    tela.onclick = escolheCor;
 
 </script>
