@@ -1,0 +1,36 @@
+Tipos de alfabeto:
+
+	Alfabeto da língua portuguesa: A B C D E F ...
+
+	Binário: 0 1.
+
+	Numérico: 0 1 2 3 4 5 6 7 8 9.
+
+	Hexadecimal: 0 1 2 3 4 5 6 7 8 9 A B C D E F.
+
+	RGB (red green blue): 0 1 2 3 4 5 6 7 8 9 10 ... 255.
+
+Representação de cores em código hexadecimal:
+
+	# _ _ red _ _ green _ _ blue;
+
+	0 = Ausência de cores;
+
+	F = Máximo de cores;
+
+	ex:
+
+		Preto (ausência de todas as cores) = #000000;
+
+		Branco (Máximo de todas as cores) = #FFFFFF;
+
+		Vermelho = #FF0000;
+
+Representação das cores em código RGB:
+	
+	0 = ausência;
+	255 = máximo;
+
+	css = rgb(255,255,255); #gera a cor branca;
+
+	rgb(0,0,255);
